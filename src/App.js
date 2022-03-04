@@ -109,10 +109,13 @@ function App() {
       mode: "no-cors",
       body: JSON.stringify({ name, format, email, schedule, date, hour }),
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((res) => {
+        console.log(res);
+        alert(res.ok ? "Report sent" : "Failed to send report");
+      })
       .catch((err) => console.log(err));
   };
+
   const conditionallyRenderComponent = (name) => {
     if (name === "specdate") {
       return (
